@@ -1,0 +1,12 @@
+# build, output
+[Bb]uild/
+[Oo]ut/
+[Bb]in/
+
+
+# vscode and vs
+.vs
+.vscode
+
+# clion
+.idea
