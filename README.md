@@ -1,4 +1,4 @@
-# Utils Log Library
+# Utils Logger Library
 
 基于C++20的高性能异步日志库，支持控制台彩色输出和文件日志。
 
@@ -13,8 +13,40 @@
 
 ## 快速开始
 
+### 编译项目
+
+项目使用`CMake`开发，可以按照以下的步骤快速测试：
+```bash
+git clone https://github.com/Motues/Logger.git
+cd Logger
+mkdir build; cd build
+cmake ..
+make -j8
+./bin/Log_Test
+```
+
+### 添加到项目中
+
+该日志库可以作为一个模块集成到几乎任何c++项目中，你可以将本项目拷贝到一个C++项目中，并在CMakeLists.txt中添加如下配置。
+
+```cmake
+add_subdirectory(${PROJECT_SOURCE_DIR}/Logger) # 项目的存放位置
+target_link_libraries(executable_name Utils::Logger) # 链接库
+```
+
+在项目中只需要引用一个头文件即可，命名空间为`Utils::Logger`。
 ```c++
-#include <Utils/Logger.hpp>
+#include "Utils/Logger.hpp"
+
+using namespace Utils::Logger;
+```
+
+## 使用示例
+
+编写测试程序如下
+
+```c++
+#include "Utils/Logger.hpp"
 
 int main() { 
     using namespace Utils::Logger;
@@ -32,7 +64,7 @@ int main() {
 }
 ```
 
-## 输出示例
+### 输出示例
 
 ```
 [2023-08-25 14:35:12.345] [INFO] System started. Version: 1.2 
@@ -85,7 +117,11 @@ Memory: 32GB DDR4
 3. 终端需支持ANSI颜色转义码
 4. 推荐使用C++20或更高版本编译器
 
-## 路线规划
+## TODO
 - [ ] 按时间/大小自动分割日志文件
 - [ ] 实现日志等级动态过滤
 - [ ] 性能优化：考虑使用无锁队列替代mutex锁
+
+
+欢迎通过Issue提交建议！
+> Made by Motues with ❤️
